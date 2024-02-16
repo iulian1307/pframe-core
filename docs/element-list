@@ -1,0 +1,8 @@
+com.qaitsolutions.pframe.core.assertion
+com.qaitsolutions.pframe.core.assertion.subjects
+com.qaitsolutions.pframe.core.config
+com.qaitsolutions.pframe.core.exceptions
+com.qaitsolutions.pframe.core.extent_reporting
+com.qaitsolutions.pframe.core.logging
+com.qaitsolutions.pframe.core.testng
+com.qaitsolutions.pframe.core.utils
