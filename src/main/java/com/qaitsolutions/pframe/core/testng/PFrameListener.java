@@ -46,8 +46,21 @@ public class PFrameListener implements
 
         var message = "Configuration [%s] has started";
 
+        var className = tr.getTestClass().getName();
+        className = className.substring(className.lastIndexOf(".") + 1);
+
+        if (tr.getMethod().isBeforeSuiteConfiguration()) {
+            report.createTest("Suite Setup").createNode(currentNodeName = "Setup");
+            Log.info(message, currentNodeName);
+        }
+
+        if (tr.getMethod().isBeforeClassConfiguration()) {
+            report.createTest(className).createNode(currentNodeName = "Test Setup");
+            Log.info(message, currentNodeName);
+        }
+
         if (tr.getMethod().isBeforeMethodConfiguration()) {
-            report.createNode(currentNodeName = BEFORE_METHOD_NAME);
+            report.createTest(className).createNode(currentNodeName = BEFORE_METHOD_NAME);
             Log.info(message, currentNodeName);
         }
 
@@ -55,21 +68,8 @@ public class PFrameListener implements
             Log.info(message, AFTER_METHOD_NAME);
         }
 
-        if (tr.getMethod().isBeforeClassConfiguration()) {
-            var className = tr.getTestClass().getName();
-            className = className.substring(className.lastIndexOf(".") + 1);
-
-            report.createTest(className).createNode(currentNodeName = "Test Setup");
-            Log.info(message, currentNodeName);
-        }
-
         if (tr.getMethod().isAfterClassConfiguration()) {
             report.createNode(currentNodeName = "Test Teardown");
-            Log.info(message, currentNodeName);
-        }
-
-        if (tr.getMethod().isBeforeSuiteConfiguration()) {
-            report.createTest("Suite Setup").createNode(currentNodeName = "Setup");
             Log.info(message, currentNodeName);
         }
 
