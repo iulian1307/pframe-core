@@ -163,6 +163,7 @@ public final class Reporting {
 
         reporter.config().setDocumentTitle(filename);
         reporter.config().setReportName(filename);
+        reporter.config().thumbnailForBase64(true);
 
         return reporter;
     }

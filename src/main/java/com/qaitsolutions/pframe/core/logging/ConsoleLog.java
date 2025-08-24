@@ -30,7 +30,6 @@ public interface ConsoleLog {
      */
     void log(String message);
 
-
     /**
      * Holds terminal commands that will change the color of the text displayed
      */
