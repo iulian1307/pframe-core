@@ -99,7 +99,7 @@ public class PFrameListener implements
 
     @Override
     public void onConfigurationFailure(ITestResult iTestResult) {
-        var method = iTestResult.getMethod();
+        final var method = iTestResult.getMethod();
 
         if (method.isAfterClassConfiguration() || method.isAfterSuiteConfiguration()) {
             var e = iTestResult.getThrowable();
